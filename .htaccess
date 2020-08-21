@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# protect config files
+RewriteCond %{REQUEST_URI} \.ini$
+RewriteRule \.ini$ - [R=404]
+RewriteRule \.db$ - [R=404]
+
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L,QSA]
