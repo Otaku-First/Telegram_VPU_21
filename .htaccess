@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.(php|html?)$ [NC,L]
+RewriteRule \.ini$ - [R=404]
+RewriteRule \.db$ - [R=404]
