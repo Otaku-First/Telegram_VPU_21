@@ -130,7 +130,7 @@ else:
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                 <th>ID</th>
+                                                <th>ID</th>
                                                 <th>Нік</th>
                                                 <th>Чат id</th>
                                                  <th>Група</th>
