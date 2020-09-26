@@ -7,13 +7,13 @@ if(isset($_POST["register"])){
         $full_name= htmlspecialchars($_POST['full_name']);
         $email=htmlspecialchars($_POST['email']);
         $password=htmlspecialchars($_POST['password']);
-        $query=mysql_query("SELECT * FROM `admins` WHERE full_name='".$email."'");
-        $numrows=mysql_num_rows($query);
+        $query=mysqli_query($db,"SELECT * FROM `admins` WHERE full_name='".$email."'");
+        $numrows=mysqli_num_rows($query);
         if($numrows==0) {
             $sql="INSERT INTO `admins`
   (email,full_name,pass)
 	VALUES('$email','$full_name', '$password')";
-            $result=mysql_query($sql);
+            $result=mysqli_query($db,$sql);
             if($result){
                 $message = "Профіль успішно зареєстровано. Перейдуть за <a href='login.php' >посиланням</a> щоб увійти в свій профіль";
             } else {

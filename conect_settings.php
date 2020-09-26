@@ -27,8 +27,8 @@ else:
                       <?php 
                               
  
-                                 $get_tok_sql= mysql_query('SELECT * FROM `bot`  WHERE id=1',$db); 
-                                       $get_tok_arr = mysql_fetch_array($get_tok_sql);
+                                 $get_tok_sql= mysqli_query($db,'SELECT * FROM `bot`  WHERE id=1');
+                                       $get_tok_arr = mysqli_fetch_array($get_tok_sql);
 
                                         
                                         

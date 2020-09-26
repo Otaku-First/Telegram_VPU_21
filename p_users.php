@@ -28,7 +28,7 @@ else:
                     <?php
 
 
-                    $get_groups_sql= mysql_query('SELECT * FROM `admins`',$db);
+                    $get_groups_sql= mysqli_query($db,'SELECT * FROM `admins`');
 
 
                     ?><br>
@@ -106,7 +106,7 @@ else:
                                     </thead>
                                     <tbody>
                                     <?
-                                    while( $get_groups_arr = mysql_fetch_array($get_groups_sql)){
+                                    while( $get_groups_arr = mysqli_fetch_array($get_groups_sql)){
 
                                         ?>
                                         <tr data-dell-id="<? echo $get_groups_arr["id"]; ?>">

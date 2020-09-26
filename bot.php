@@ -19,7 +19,7 @@ $dete_send = $output['message']['date'];
 $text_send = $output['message']['text'];
 
 
-$get_groups_sql= mysql_query('SELECT * FROM `groups`',$db);
+$get_groups_sql= mysqli_query($db,'SELECT * FROM `groups`');
 
 // створенння клавіатури
 $replyMarkup = [
@@ -46,9 +46,9 @@ $send_text_to_group = $_GET["send_text_to_group"];
 $group_sended = $_GET["group_sended"];
 if ($send_text_to_group||$group_sended){
 
-    $send_mess_sql = mysql_query("SELECT `chat_id` FROM `users` WHERE u_group=".$group_sended."",$db);
+    $send_mess_sql = mysqli_query($db,"SELECT `chat_id` FROM `users` WHERE u_group=".$group_sended."");
 
-    while ($send_mess_arr = mysql_fetch_array($send_mess_sql)) {
+    while ($send_mess_arr = mysqli_fetch_array($send_mess_sql)) {
         foreach ($send_mess_arr as $value) {}
         // var_dump($send_mess_arr);
         sendMessage($send_mess_arr["chat_id"], $send_text_to_group);
@@ -70,7 +70,7 @@ switch($message) {
         $mysk = "";
         $sdadass = 0;
 // можна юзати url для посилань
-        while($get_groups_arr = mysql_fetch_array($get_groups_sql)) {
+        while($get_groups_arr = mysqli_fetch_array($get_groups_sql)) {
 
             $mysk[$sdadass]  = [["text"=>$get_groups_arr["short_name"]."-".$get_groups_arr["number"],"callback_data"=>"set_group".$get_groups_arr["number"]]];
             $sdadass ++;

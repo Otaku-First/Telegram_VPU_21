@@ -26,7 +26,7 @@ else:
                         
                       <?php 
                               
-       $group_sql = mysql_query("SELECT * FROM `groups`");
+       $group_sql = mysqli_query($db,"SELECT * FROM `groups`");
                                   
 
                                         
@@ -42,7 +42,7 @@ else:
   <div class="form-group">
     <label for="groupSelect">Виберіть групу</label>
     <select class="form-control" id="groupSelect">
-        <?php while($group_arr = mysql_fetch_array($group_sql)){ ?>
+        <?php while($group_arr = mysqli_fetch_array($group_sql)){ ?>
       <option value="<?php echo $group_arr["number"];?>"><?php echo $group_arr["number"]; echo " - ";echo $group_arr["short_name"]; ?></option>
 
       <?php } ?>

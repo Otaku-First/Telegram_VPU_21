@@ -26,11 +26,11 @@ else:
                         
                       <?php 
                               
-       $mess_sql = mysql_query("SELECT * FROM `messages` WHERE chat_id=".$_GET["u_mess"]."");
+       $mess_sql = mysqli_query($db,"SELECT * FROM `messages` WHERE chat_id=".$_GET["u_mess"]."");
                                   
-       $u_name_sql = mysql_query("SELECT `name` FROM `users` WHERE chat_id=".$_GET["u_mess"]."");
+       $u_name_sql = mysqli_query($db,"SELECT `name` FROM `users` WHERE chat_id=".$_GET["u_mess"]."");
                                         
-                                        $u_name_arr = mysql_fetch_array($u_name_sql);
+                                        $u_name_arr = mysqli_fetch_array($u_name_sql);
                                        
 
                                         
@@ -68,7 +68,7 @@ else:
                                         </tfoot>
                                         <tbody>
                                             <?php 
-                                           while ($mess_arr = mysql_fetch_array($mess_sql)) {
+                                           while ($mess_arr = mysqli_fetch_array($mess_sql)) {
                                                
                                                 foreach ($mess_arr as $value) {}
                                            

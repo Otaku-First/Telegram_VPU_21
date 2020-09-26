@@ -1,6 +1,10 @@
 <?php 
 
 require_once("post/db_connect.php");
+//require_once ("rb/rb.php");
+//R::setup('mysql:host=sql280.main-hosting.eu;dbname=u630099368_cluster_forest',
+//    'u630099368_admin22012','Assasins2018');
+//
 
 
 session_start();
@@ -31,7 +35,7 @@ else:
                         
                         <?php
                     
- $count_users_sql = mysql_query("SELECT * FROM `users`",$db); 
+ $count_users_sql = mysqli_query($db,"SELECT * FROM `users`");
 
                         
                         ?>
@@ -39,7 +43,7 @@ else:
                             <div class="col-xl-3 col-md-6">
                                 <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?php echo  mysql_num_rows($count_users_sql); ?></h3>
+                <h3><?php echo  mysqli_num_rows($count_users_sql); ?></h3>
                 <p>Користувачів бота</p>
             </div>
             <div class="icon">
@@ -105,11 +109,11 @@ else:
                                 <i class="fas fa-table mr-1"></i>
                                 Користувачі бота  <?php
                               
-                                          $users_sql = mysql_query("SELECT * FROM `users`");
-                                  
-                                           
-                                        
-                                        
+                                          $users_sql = mysqli_query($db,"SELECT * FROM `users`");
+
+
+//                                $users = R::findAll('users');
+//                                       print_r($users);
                                        
 
                                         
@@ -138,7 +142,7 @@ else:
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                           while ($users_arr = mysql_fetch_array($users_sql)) {
+                                           while ($users_arr = mysqli_fetch_array($users_sql)) {
                                                 foreach ($users_arr as $value) {}
                                                // var_dump($users_arr);
                                              

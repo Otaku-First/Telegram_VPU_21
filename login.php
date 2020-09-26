@@ -18,13 +18,13 @@ if(isset($_POST["email"])){
         $email=htmlspecialchars($_POST['email']);
         $pass=htmlspecialchars($_POST['pass']);
 
-        $query = mysql_query("SELECT * FROM `admins` WHERE `email`='".$email."' AND`pass`='".$pass."'");
+        $query = mysqli_query($db,"SELECT * FROM `admins` WHERE `email`='".$email."' AND`pass`='".$pass."'");
 
-        $numrows=mysql_num_rows($query);
+        $numrows=mysqli_num_rows($query);
 
         if($numrows!=0)
         {
-            while($row=mysql_fetch_array($query))
+            while($row=mysqli_fetch_array($query))
             {
                 $dbemail=$row['email'];
                 $dbpass=$row['pass'];

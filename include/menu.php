@@ -86,9 +86,9 @@ require_once('post/db_connect.php');
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <? $get_name_for_menu_sql = mysql_query("SELECT `full_name` FROM `admins` WHERE email = '".$_SESSION['session_email']."'");
+                        <? $get_name_for_menu_sql = mysqli_query($db,"SELECT `full_name` FROM `admins` WHERE email = '".$_SESSION['session_email']."'");
 
-                        $get_name_for_menu_arr = mysql_fetch_array($get_name_for_menu_sql);
+                        $get_name_for_menu_arr = mysqli_fetch_array($get_name_for_menu_sql);
 
 
                         ?>

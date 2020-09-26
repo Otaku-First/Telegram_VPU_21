@@ -24,14 +24,21 @@ else:
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        
+                        <script>
+
+
+                            function addAtribToLogin(Id){
+                                var liElem = document.querySelector(Id);
+                                liElem.setAttribute('selected', 'selected');
+
+                            }; </script>
                       <?php 
                               
  
-                                 $get_groups_sql= mysql_query('SELECT * FROM `groups`',$db);
+                                 $get_groups_sql= mysqli_query($db, 'SELECT * FROM `groups`');
 
 
-                      $get_admins_sql= mysql_query('SELECT * FROM `admins`',$db);
+                      $get_admins_sql= mysqli_query($db,'SELECT * FROM `admins`');
 
 
 
@@ -112,9 +119,9 @@ else:
                 <tbody>
                      <?
                     global $ad_mds;
-while( $get_admins_arr = mysql_fetch_array($get_admins_sql)){$ad_mds .= "<option value='".$get_admins_arr["id"]."'>".$get_admins_arr["full_name"]."</option>";}
+while( $get_admins_arr = mysqli_fetch_array($get_admins_sql)){$ad_mds .= "<option value='".$get_admins_arr["id"]."'>".$get_admins_arr["full_name"]."</option>";}
 
-                      while( $get_groups_arr = mysql_fetch_array($get_groups_sql)){
+                      while( $get_groups_arr = mysqli_fetch_array($get_groups_sql)){
 
                     ?>
                     <tr data-dell-id="<? echo $get_groups_arr["id"]; ?>">
@@ -124,16 +131,16 @@ while( $get_admins_arr = mysql_fetch_array($get_admins_sql)){$ad_mds .= "<option
                         <td><? echo $get_groups_arr["short_name"]; ?></td>
                         <td><?
 
-                            $get_admins_name_real  = mysql_query("SELECT * FROM `admins` WHERE `id`='".$get_groups_arr['village_elder']."'");
+                            $get_admins_name_real  = mysqli_query($db,"SELECT * FROM `admins` WHERE `id`='".$get_groups_arr['village_elder']."'");
 
 
-                            $get_admins_name_real_arr = mysql_fetch_array($get_admins_name_real );
+                            $get_admins_name_real_arr = mysqli_fetch_array($get_admins_name_real );
                             echo  $get_admins_name_real_arr["full_name"]; ?></td>
                         <td><?
 
-                            $get_admins_name_real2  = mysql_query("SELECT * FROM `admins` WHERE `id`='".$get_groups_arr['manager']."'");
+                            $get_admins_name_real2  = mysqli_query($db,"SELECT * FROM `admins` WHERE `id`='".$get_groups_arr['manager']."'");
 
-                            $get_admins_name_real_arr2 = mysql_fetch_array($get_admins_name_real2 );
+                            $get_admins_name_real_arr2 = mysqli_fetch_array($get_admins_name_real2 );
                             echo  $get_admins_name_real_arr2["full_name"];  ?></td>
                         <td>
                             <a href="#" data-toggle="modal" data-target="#editgroup<? echo $get_groups_arr["id"]; ?>" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
@@ -169,10 +176,27 @@ while( $get_admins_arr = mysql_fetch_array($get_admins_sql)){$ad_mds .= "<option
   <div class="form-group">
     <label >Староста</label>
       <select class="form-control" autocomplete="off" value="<?  echo $get_groups_arr["village_elder"]; ?>" id="edit_village_elder<? echo $get_groups_arr["id"]; ?>"><? echo $ad_mds;?></select>
+
+      <script>
+
+
+          addAtribToLogin('#edit_village_elder<? echo $get_groups_arr["id"]; ?> option[value="<? echo $get_groups_arr["village_elder"]; ?>"]')
+
+      </script>
   </div>
   <div class="form-group">
     <label >Керівник</label>
     <select class="form-control" autocomplete="off" value="<? echo $get_groups_arr["manager"]; ?>" id="edit_manager<? echo $get_groups_arr["id"]; ?>"><? echo $ad_mds;?></select>
+
+
+
+      <script>
+
+
+          addAtribToLogin('#edit_manager<? echo $get_groups_arr["id"]; ?> option[value="<? echo $get_groups_arr["manager"]; ?>"]')
+
+      </script>
+
   </div>
   
       </div>
