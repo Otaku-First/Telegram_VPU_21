@@ -63,7 +63,10 @@ else:
         <script>
             $(document).on("click","#su_send_mess",function (){
                 var num_group = $("#groupSelect").val();
-                var mess_group =$("#message_text").val();
+                var mess_group =CKEDITOR.instances['message_text'].getData();
+
+
+
                 if (mess_group.length==0){
                    
                     notyf.error('Ви не вказали текст сповіщення');

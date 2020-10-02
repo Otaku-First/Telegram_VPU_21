@@ -10313,3 +10313,7 @@ border-radius: 0.25rem;
   border: none !important;
   background-color: rgb(72, 79, 87) !important;
 }
+
+.cke_toolbar_break{
+  display: none !important;
+}

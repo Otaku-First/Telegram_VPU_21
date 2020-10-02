@@ -21,18 +21,7 @@ $text_send = $output['message']['text'];
 
 $get_groups_sql= mysqli_query($db,'SELECT * FROM `groups`');
 
-// створенння клавіатури
-$replyMarkup = [
-    'keyboard' =>[
-        ["Курва"]
 
-    ]
-
-]
-
-;
-
-$keyboard = json_encode($replyMarkup);
 
 //видалення клавіатури
 
@@ -40,7 +29,7 @@ $reply_markup2 = ['remove_keyboard' => true];
 
 $reply_markup2 = json_encode($reply_markup2);
 
-createKeyboard($chat_id, $reply_markup2);
+
 
 $send_text_to_group = $_GET["send_text_to_group"];
 $group_sended = $_GET["group_sended"];
@@ -51,6 +40,8 @@ if ($send_text_to_group||$group_sended){
     while ($send_mess_arr = mysqli_fetch_array($send_mess_sql)) {
         foreach ($send_mess_arr as $value) {}
         // var_dump($send_mess_arr);
+        $send_text_to_group = str_replace("<p>", "", $send_text_to_group);
+        $send_text_to_group =str_replace("</p>", "", $send_text_to_group);
         sendMessage($send_mess_arr["chat_id"], $send_text_to_group);
 
     }
@@ -80,6 +71,22 @@ switch($message) {
         $replyMarkup = json_encode($keyboard);
         sendMessage($chat_id, "Вітаємо @".$username." ! Виберіть свою групу", $replyMarkup);
 
+
+        // створенння клавіатури
+        $main_keyboard= [
+            'keyboard' =>[
+                ["Налаштування"],
+                ["Скарги"]
+
+
+            ]
+
+        ]
+
+        ;
+
+        $main_keyboard = json_encode($replyMarkup);
+        createKeyboard($chat_id, $main_keyboard);
         break;
 }
 
