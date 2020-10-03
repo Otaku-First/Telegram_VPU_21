@@ -1,11 +1,11 @@
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../assets/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap4.min.js"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="../assets/js/jquery.dataTables.min.js"></script>
+        <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../assets/demo/datatables-demo.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" integrity="sha512-0nkKORjFgcyxv3HbE4rzFUlENUMNqic/EzDIeYCgsKa/nwqr2B91Vu/tNAu4Q0cBuG4Xe/D1f/freEci/7GDRA==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
@@ -38,8 +38,8 @@
 
              CKEDITOR.config.removeButtons = 'Cut,Undo,Find,Scayt,Save,Templates,Form,HiddenField,Replace,Checkbox,Radio,SelectAll,Redo,Copy,Paste,PasteText,PasteFromWord,NewPage,ExportPdf,Preview,Print,TextField,Textarea,Select,Button,ImageButton,Subscript,Superscript,NumberedList,Outdent,Blockquote,JustifyLeft,BidiLtr,BulletedList,Indent,CreateDiv,JustifyCenter,BidiRtl,Link,Unlink,JustifyRight,Language,Anchor,JustifyBlock,Table,Flash,Image,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,TextColor,Maximize,About,ShowBlocks,BGColor,Format,Font,FontSize,RemoveFormat,CopyFormatting';
 
-           //  CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
-             //CKEDITOR.config.shiftEnterMode = CKEDITOR.ENTER_P
+             CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+             //CKEDITOR.config.shiftEnterMode = CKEDITOR.ENTER_BR
              CKEDITOR.config.autoParagraph = false;
             // CKEDITOR.config.enterMode = CKEDITOR.ENTER_P;
              CKEDITOR.config.disallowedContent = 'br';

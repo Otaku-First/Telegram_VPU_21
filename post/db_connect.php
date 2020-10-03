@@ -1,4 +1,12 @@
 <?php
+
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
+
+require_once ("../config/config.php");
 /*подключение к базе данных*/
 define('TIMEZONE', 'Europe/Kiev'); date_default_timezone_set(TIMEZONE);
 $host = "sql280.main-hosting.eu"; // в 90% случаев это менять не надо

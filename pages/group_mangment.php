@@ -1,6 +1,10 @@
 <?php
-
-require_once("post/db_connect.php");
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
+require_once("../post/db_connect.php");
 
 
 session_start();
@@ -14,13 +18,13 @@ else:
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php  include 'include/head.php';?> 
-        <link href="css/user_management.css" rel="stylesheet" >
+        <?php  include '../include/head.php';?>
+        <link href="../assets/css/user_management.css" rel="stylesheet" >
     </head>
     <body class="sb-nav-fixed">
-       <?php  include 'include/nav.php';?> 
+       <?php  include '../include/nav.php';?>
         <div id="layoutSidenav">
-             <?php  include 'include/menu.php';?>
+             <?php  include '../include/menu.php';?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -228,7 +232,7 @@ while( $get_admins_arr = mysqli_fetch_array($get_admins_sql)){$ad_mds .= "<optio
                  $.ajax(
               {
                  type: "POST",
-                 url: "post/update_group.php",
+                 url: "../post/update_group.php",
                  data:{ myi_id:myi_id, edit_number:edit_number, edit_short_name:edit_short_name, edit_full_name:edit_full_name,edit_village_elder:edit_village_elder,edit_manager:edit_manager  },
                  success: function(response) 
                  {
@@ -262,10 +266,10 @@ while( $get_admins_arr = mysqli_fetch_array($get_admins_sql)){$ad_mds .= "<optio
 
                     </div>
                 </main>
-                 <?php  include 'include/flooter.php';?> 
+                 <?php  include '../include/flooter.php';?>
             </div>
         </div>
-        <?php  include 'include/script.php';?> 
+        <?php  include '../include/script.php';?>
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -292,7 +296,7 @@ while( $get_admins_arr = mysqli_fetch_array($get_admins_sql)){$ad_mds .= "<optio
                  $.ajax(
               {
                  type: "POST",
-                 url: "post/add_group.php",
+                 url: "../post/add_group.php",
                  data:{ number:number, short_name:short_name, full_name:full_name,village_elder:village_elder,manager:manager  },
                  success: function(response) 
                  {

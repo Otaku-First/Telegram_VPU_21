@@ -1,6 +1,10 @@
 <?php
-
-require_once("post/db_connect.php");
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
+require_once("../post/db_connect.php");
 
 
 session_start();
@@ -14,13 +18,13 @@ else:
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <?php  include 'include/head.php';?>
-        <link href="css/user_management.css" rel="stylesheet" >
+        <?php  include '../include/head.php';?>
+        <link href="../assets/css/user_management.css" rel="stylesheet" >
     </head>
     <body class="sb-nav-fixed">
-    <?php  include 'include/nav.php';?>
+    <?php  include '../include/nav.php';?>
     <div id="layoutSidenav">
-        <?php  include 'include/menu.php';?>
+        <?php  include '../include/menu.php';?>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
@@ -214,10 +218,10 @@ else:
 
                 </div>
             </main>
-            <?php  include 'include/flooter.php';?>
+            <?php  include '../include/flooter.php';?>
         </div>
     </div>
-    <?php  include 'include/script.php';?>
+    <?php  include '../include/script.php';?>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

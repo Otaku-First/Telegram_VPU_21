@@ -1,6 +1,6 @@
 <?php
 
-require_once('post/db_connect.php');
+require_once('../post/db_connect.php');
 
 ?>
 
@@ -10,7 +10,7 @@ require_once('post/db_connect.php');
                     <div class="sb-sidenav-menu" style="overflow: hidden; ">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"></div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="../pages/main.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Головна
                             </a>
@@ -23,7 +23,7 @@ require_once('post/db_connect.php');
                                 <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
                                 Розклад дзвінків
                             </a>
-                             <a class="nav-link" href="send_message.php">
+                             <a class="nav-link" href="timetable.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-week"></i></div>
                                Розклад уроків
                             </a>

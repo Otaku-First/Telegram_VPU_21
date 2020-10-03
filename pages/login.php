@@ -1,6 +1,11 @@
 <?php
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
 session_start();
-require_once('post/db_connect.php');
+require_once('../post/db_connect.php');
 global $db;
 ?>
 
@@ -9,7 +14,7 @@ global $db;
 
 if(isset($_SESSION["session_email"])){
     // вывод "Session is set"; // в целях проверки
-    header("Location: index.php");
+    header("Location: main.php");
 }
 
 if(isset($_POST["email"])){
@@ -39,7 +44,7 @@ if(isset($_POST["email"])){
                 $_SESSION['session_email']=$email;
 
                 /* Перенаправление браузера */
-                header("Location: index.php");
+                header("Location: main.php");
             }
         } else {
               $message = "Неправильний пароль або логін";
@@ -60,7 +65,7 @@ if(isset($_POST["email"])){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Авторизація</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../assets/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -112,6 +117,6 @@ if(isset($_POST["email"])){
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../assets/js/scripts.js"></script>
     </body>
 </html>

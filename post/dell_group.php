@@ -1,4 +1,11 @@
 <?php
+
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
+
 require_once("db_connect.php");
 
 //$bot_token = $_GET['bot_token'];
@@ -7,7 +14,7 @@ require_once("db_connect.php");
 
 
  
-mysql_query("DELETE FROM `groups` WHERE id = '".$_POST["dell_id"]."' ",$db);
+mysqli_query($db,"DELETE FROM `groups` WHERE id = '".$_POST["dell_id"]."' ");
      
  
 ?>

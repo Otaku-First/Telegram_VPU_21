@@ -1,6 +1,11 @@
 <?php
 
-require_once("post/db_connect.php");
+/*
+Author: Otaku-First
+GitHub: https://github.com/Otaku-First
+Date: 30.09.20
+*/
+require_once("../post/db_connect.php");
 
 
 session_start();
@@ -14,31 +19,31 @@ else:
 <!DOCTYPE html>
 <html lang="en">
     <head>
-       <?php  include 'include/head.php';?> 
+       <?php  include '../include/head.php';?>
     </head>
     <body class="sb-nav-fixed">
-       <?php  include 'include/nav.php';?> 
+       <?php  include '../include/nav.php';?>
         <div id="layoutSidenav">
-             <?php  include 'include/menu.php';?>
+             <?php  include '../include/menu.php';?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        
-                      <?php 
-                              
+
+                      <?php
+
        $group_sql = mysqli_query($db,"SELECT * FROM `groups`");
-                                  
 
-                                        
-                                       
 
-                                        
-                                        
+
+
+
+
+
                                             ?><br>
                                             <h1>Надсилання сповіщення</h1>
                                             <hr>
                         <div></div>
-                        
+
   <div class="form-group">
     <label for="groupSelect">Виберіть групу</label>
     <select class="form-control" id="groupSelect">
@@ -48,7 +53,7 @@ else:
       <?php } ?>
     </select>
   </div>
-  
+
   <div class="form-group">
     <label for="message_text">Текст сповіщення</label>
     <textarea autocomplete="off" class="form-control" id="message_text" rows="3"></textarea>
@@ -56,10 +61,10 @@ else:
   <button class="btn btn-primary" id="su_send_mess">Надіслати сповіщення</button></div>
                     </div>
                 </main>
-                 <?php  include 'include/flooter.php';?> 
+                 <?php  include '../include/flooter.php';?>
             </div>
         </div>
-       <?php  include 'include/script.php';?> 
+       <?php  include '../include/script.php';?>
         <script>
             $(document).on("click","#su_send_mess",function (){
                 var num_group = $("#groupSelect").val();
@@ -68,7 +73,7 @@ else:
 
 
                 if (mess_group.length==0){
-                   
+
                     notyf.error('Ви не вказали текст сповіщення');
                     return false;
                 }
@@ -77,18 +82,18 @@ else:
                  type: "GET",
                  url: "https://search-games.online/telega/bot.php",
                  data:{ group_sended:num_group, send_text_to_group:mess_group  },
-                 success: function(response) 
+                 success: function(response)
                  {notyf.success('Сповіщення було надіслано');
                    console.log("OK")
                  }
               }
               );
             })
-            
+
         </script>
-     
+
         <script>$(document).ready(function() {
- //  $("#groupSelect").chosen(); 
+ //  $("#groupSelect").chosen();
 } );</script>
     </body>
 </html>
