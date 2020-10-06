@@ -40,7 +40,7 @@ else:
                         <?php
                     
  $count_users_sql = mysqli_query($db,"SELECT * FROM `users`");
-
+ $count_report_sql = mysqli_query($db,"SELECT * FROM `report` WHERE view=0");
                         
                         ?>
                         <div class="row">
@@ -78,14 +78,14 @@ else:
                             </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                               <div class="small-box bg-red">
+                                <a href="reporst.php" style="text-decoration: none;"><div class="small-box bg-red">
             <div class="inner">
-                <h3>NaN</h3>
+                <h3><?php echo  mysqli_num_rows($count_report_sql); ?></h3>
                 <p>Скарг</p>
             </div>
             <div class="icon">
                 <i class="fas fa-users"></i>
-            </div></div>
+            </div></div></a>
                             </div></div>
                         
                         <!--<div class="row">-->

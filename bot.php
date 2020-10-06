@@ -78,14 +78,11 @@ switch($message) {
         $main_keyboard = [
             'keyboard' =>[
                 ["Налаштування"],
-                ["Скарги"],
                 ["Скарги"]
             ],
             'resize_keyboard'=> true
 
-        ]
-
-        ;
+        ];
 
         $main_keyboard = json_encode($main_keyboard);
 
@@ -99,6 +96,15 @@ switch($message) {
 
         break;
 }
+switch ($data) {
+    case "Налаштування":
+        sendMessage($chat_id_in, "sadasd" );
+        break;
+
+
+}
+
+
 
 if (strpos($data, 'set_group') !== false)
 {
