@@ -42,7 +42,7 @@ else:
                         <div></div>
                         
   <div class="form-group">
-      <a id="conf_hok" href="https://api.telegram.org/bot<? echo $get_tok_arr["token"] ?>/setWebhook?url=https://search-games.online/telega/bot.php">https://api.telegram.org/bot<? echo $get_tok_arr["token"] ?>/setWebhook?url=https://search-games.online/telega/bot.php</a>
+      <a id="conf_hok" href="https://api.telegram.org/bot<? echo $get_tok_arr["token"] ?>/setWebhook?url=https://demo-serv.tk/bot.php">https://api.telegram.org/bot<? echo $get_tok_arr["token"] ?>/setWebhook?url=https://demo-serv.tk/bot.php</a>
       <br>
     <label for="groupSelect">Вставте токен</label>
      <input autocomplete="off" value="<? echo $get_tok_arr["token"] ?>" type="text" class="form-control" id="bot_token">
@@ -67,8 +67,8 @@ else:
                     notyf.error('Ви не вставили токен');
                     return false;
                 }
-                $("#conf_hok").text("https://api.telegram.org/bot"+bot_token+"/setWebhook?url=https://search-games.online/telega/bot.php");
-               $("#conf_hok").attr("href","https://api.telegram.org/bot"+bot_token+"/setWebhook?url=https://search-games.online/telega/bot.php");
+                $("#conf_hok").text("https://api.telegram.org/bot"+bot_token+"/setWebhook?url=https://demo-serv.tk/bot.php");
+               $("#conf_hok").attr("href","https://api.telegram.org/bot"+bot_token+"/setWebhook?url=https://demo-serv.tk/bot.php");
                  $.ajax(
               {
                  type: "POST",

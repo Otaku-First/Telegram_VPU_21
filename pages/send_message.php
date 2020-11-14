@@ -79,11 +79,12 @@ else:
                  $.ajax(
               {
                  type: "GET",
-                 url: "https://search-games.online/telega/bot.php",
+                 url: "https://demo-serv.tk/bot.php",
                  data:{ group_sended:num_group, send_text_to_group:mess_group  },
                  success: function(response) 
                  {notyf.success('Сповіщення було надіслано');
                    console.log("OK")
+
                  }
               }
               );
