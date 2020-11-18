@@ -27,7 +27,7 @@ require_once('../post/db_connect.php');
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-week"></i></div>
                                Розклад уроків
                             </a>
-                            <a class="nav-link" href="send_message.php">
+                            <a class="nav-link" href="replacement.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-times"></i></div>
                                 Заміни
                             </a>
