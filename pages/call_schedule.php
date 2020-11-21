@@ -104,14 +104,14 @@ else:
                             $call_schedule_sql = mysqli_query($db,"SELECT * FROM `call_schedule`");
                             while( $get_call_schedule_arr = mysqli_fetch_array($call_schedule_sql)){
                                 ?>
-                                <div class="col-xl-3 col-md-6" onclick="document.location.href = 'edit_timetable.php?group=<? echo $get_call_schedule_arr["for_day"]; ?>';">
-                                    <div class="small-box bg-green">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="small-box bg-yellow">
                                         <div class="inner">
                                             <h3><? echo $get_call_schedule_arr["for_day"]; ?></h3>
-                                            <p><? echo $get_call_schedule_arr["text"]; ?></p>
+                                            <textarea rows="8" class="form-control" id="text"><? echo $get_call_schedule_arr["text"]; ?></textarea>
                                         </div>
-                                        <div class="icon">
-                                            <i class="fas fa-users"></i>
+                                        <div>
+                                            fdbf
                                         </div>
                                     </div>
                                 </div>
