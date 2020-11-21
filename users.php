@@ -8,7 +8,9 @@ function sendMessage($chat_id, $message, $replyMarkup) {
 function createKeyboard($chat_id, $replyMarkup) {
 
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=%F0%9F%91%86&reply_markup=' . $replyMarkup);
-//
+//   /%F0%9F%91%86
+//  file_get_contents($GLOBALS['api'] . '/deleteMessage?chat_id=' . $chat_id . '&message_id='.$output['message']["message_id"]);
+
 }
 
 function make_user($name,$chat_id,$u_group){
@@ -16,10 +18,10 @@ function make_user($name,$chat_id,$u_group){
     $name = mysqli_real_escape_string($db,$name);
     $chat_id = mysqli_real_escape_string($db,$chat_id);
     $u_group = mysqli_real_escape_string($db,$u_group);
-    $sel = "SELECT * FROM `users` WHERE chat_id = ".$chat_id;
+    $sel = "SELECT * FROM `users` WHERE chat_id = ".$chat_id."";
     $res = mysqli_query($db,$sel);
     $num = mysqli_num_rows($res);
-    $get_group_info_sql= mysqli_query($db,"SELECT * FROM `groups` WHERE number=".$u_group);
+    $get_group_info_sql= mysqli_query($db,"SELECT * FROM `groups` WHERE number=".$u_group."");
     $get_group_info_arr = mysqli_fetch_array($get_group_info_sql);
 
     $sel2 = "SELECT * FROM `messages` WHERE chat_id = ".$chat_id." ORDER BY id DESC ";
@@ -36,12 +38,12 @@ function make_user($name,$chat_id,$u_group){
         sendMessage($chat_id,  $name ." вас додано в групу ".$get_group_info_arr["short_name"]."-".$u_group, null);
 
     }else {
-        $get_user_info_sql= mysqli_query($db,'SELECT * FROM `users` WHERE chat_id='.$chat_id);
+        $get_user_info_sql= mysqli_query($db,'SELECT * FROM `users` WHERE chat_id='.$chat_id.'');
         $get_user_info_arr = mysqli_fetch_array($get_user_info_sql);
 
-        $get_group_info_sql= mysqli_query($db,'SELECT * FROM `groups` WHERE number='.$get_user_info_arr["u_group"]);
+        $get_group_info_sql= mysqli_query($db,'SELECT * FROM `groups` WHERE number='.$get_user_info_arr["u_group"].'');
         $get_group_info_arr = mysqli_fetch_array($get_group_info_sql);
-        sendMessage($chat_id, $name." вас не додано в групу ".$get_group_info_arr["short_name"]."-".$u_group. " оскільки ви вже знаходитесь в групі ".$get_group_info_arr["short_name"]."-".$get_user_info_arr["u_group"]."", null);
+        sendMessage($chat_id, $name." вас не додано в групу ".$get_group_info_arr["short_name"]."-".$u_group. " оскільки ви вже знаходитесь в групі ".$get_group_info_arr["short_name"]."-".$get_user_info_arr["u_group"]."".$is_update, null);
     }
 
 

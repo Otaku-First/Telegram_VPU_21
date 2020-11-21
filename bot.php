@@ -1,5 +1,6 @@
 <?php
-ini_set( 'display_errors', '1' );
+
+//ini_set( 'display_errors', '1' );
 require_once("post/db_connect.php");
 require_once("users.php");
 // Connect Classes >
@@ -37,12 +38,12 @@ $dog = "@";
 //$get_groups_sql= mysqli_query($db,"SELECT * FROM `groups`");
 $get_mode_sql= mysqli_query($db,"SELECT * FROM `users` WHERE chat_id=".$chat_id);
 $get_mode_arr = mysqli_fetch_array($get_mode_sql);
-
+$is_sendMessage = $get_mode_arr["sendMessage"];
 
 
 if ($_GET["group_sended"]||$_GET["send_text_to_group"]){
 
-$bot_web_sync->sendMessageWithWebAdmin($_GET["group_sended"],$_GET["send_text_to_group"]);
+    $bot_web_sync->sendMessageWithWebAdmin($_GET["group_sended"],$_GET["send_text_to_group"]);
 }
 
 switch($message) {
@@ -67,13 +68,13 @@ for($i = 0; $i < 2; $i++){
     $last_mes= $get_last_mess_arr["text"];
 }
 switch ($message) {
-    case "Налаштування":
-        $bot_main_function->createKeyboard($chat_id, $bot_interface->settingKeyboard());
+    case "Налаштування \xF0\x9F\x94\xA7":
+        $bot_main_function->createKeyboard($chat_id, $bot_interface->settingKeyboard($is_sendMessage));
         break;
-    case "Скарги":
+    case "Скарги \xF0\x9F\x93\xAE":
         $bot_main_function->sendMessage($chat_id, "Введіть будьласка скаргу:",null);
         break;
-    case "Змінити групу":
+    case "Змінити групу \xF0\x9F\x93\x8D":
         $keyboard=array("inline_keyboard"=>$bot_interface->getGroups());
         $replyMarkup = json_encode($keyboard);
         if (strlen($username)==0){
@@ -82,18 +83,34 @@ switch ($message) {
         }
 
         $bot_main_function->sendMessage($chat_id, "Вітаємо ".$dog.$username." ! Виберіть свою групу", $replyMarkup);
-        $bot_main_function->createKeyboard($chat_id, $bot_interface->mainKeyboard());
+        // $bot_main_function->createKeyboard($chat_id, $bot_interface->mainKeyboard());
         break;
-    case "Сповіщення з розкладом":
-
+    case "Сповіщення з розкладом \xE2\x9C\x85":
+        mysqli_query($db,"UPDATE `users` SET `sendMessage` = 0 WHERE chat_id =" .$chat_id);
+        $get_mode_sql= mysqli_query($db,"SELECT * FROM `users` WHERE chat_id=".$chat_id);
+        $get_mode_arr = mysqli_fetch_array($get_mode_sql);
+        $is_sendMessage = $get_mode_arr["sendMessage"];
+        $bot_main_function->createKeyboard($chat_id, $bot_interface->settingKeyboard($is_sendMessage));
         break;
-    case "Творці":
+    case "Сповіщення з розкладом \xF0\x9F\x9A\xAB":
+        mysqli_query($db,"UPDATE `users` SET `sendMessage` = 1 WHERE chat_id =" .$chat_id);
+        $get_mode_sql= mysqli_query($db,"SELECT * FROM `users` WHERE chat_id=".$chat_id);
+        $get_mode_arr = mysqli_fetch_array($get_mode_sql);
+        $is_sendMessage = $get_mode_arr["sendMessage"];
+        $bot_main_function->createKeyboard($chat_id, $bot_interface->settingKeyboard($is_sendMessage));
+        break;
+    case "Творці \xF0\x9F\x94\x9E":
         $bot_main_function->sendMessage($chat_id, "Творці бота та системи управління ним:\n@OtakuFirstUA\n@Coll_Otaku",null);
+        break;
+    case "Назад \xE2\x8F\xAA":
+
+        $bot_main_function->createKeyboard($chat_id, $bot_interface->mainKeyboard());
+
         break;
 }
 
 switch($last_mes){
-    case "Скарги":
+    case "Скарги \xF0\x9F\x93\xAE":
         mysqli_query($db,"UPDATE `users` SET `mode`='".$message."' WHERE chat_id =" .$chat_id);
         $get_user_mode_sql=  mysqli_query($db,"SELECT * FROM `users` WHERE chat_id = ".$chat_id);
         $get_user_mode_arr = mysqli_fetch_array($get_user_mode_sql);
@@ -119,11 +136,12 @@ if (strpos($replace_data, 'set_group') !== false)
 
             }
             $is_update = true;
-           // make_user($dog.$username_from,$chat_id_in,$u_group);
+            // make_user($dog.$username_from,$chat_id_in,$u_group);
             $bot_user->make_user($dog.$username_from,$chat_id_in,$u_group);
             break;
     }
 }
 
 $bot_main_function->save_message($dete_send,$chat_id,$text_send);
+
 
