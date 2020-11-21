@@ -19,7 +19,7 @@ require_once('../post/db_connect.php');
                                 <div class="sb-nav-link-icon"><i class="fas fa-paper-plane"></i></div>
                                 Надіслати сповіщення
                             </a>
-                             <a class="nav-link" href="send_message.php">
+                             <a class="nav-link" href="call_schedule.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
                                 Розклад дзвінків
                             </a>
