@@ -1,5 +1,6 @@
 <?php
 require_once "post/db_connect.php";
+require_once "bot.php";
 
 
 class BotMainFunction

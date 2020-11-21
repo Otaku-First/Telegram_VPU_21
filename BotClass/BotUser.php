@@ -4,7 +4,7 @@ require_once "post/db_connect.php";
 class BotUser
 
 {
-
+    public $name = "555";
 
     function make_user($name,$chat_id,$u_group){
         global $db;
@@ -21,7 +21,7 @@ class BotUser
         $res2 = mysqli_query($db,$sel2);
         $arrMess = mysqli_fetch_array($res2);
         $last_mes= $arrMess["text"];
-        if($last_mes=="Змінити групу"){
+        if($last_mes=="Змінити групу \xF0\x9F\x93\x8D"){
             $query = "UPDATE `users` SET u_group = '".$u_group."' WHERE chat_id = ".$chat_id;
             mysqli_query($db,$query);
             sendMessage($chat_id,  $name ." ви змінили групу на ".$get_group_info_arr["short_name"]."-".$u_group, null);

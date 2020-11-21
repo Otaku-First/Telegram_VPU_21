@@ -24,6 +24,7 @@ $db = mysqli_connect($host,$username,$password,$databasename);
 
 
 mysqli_query($db,'SET NAMES utf8');
-mysqli_query($db,'SET CHARACTER SET utf8');
+
 mysqli_query($db,'SET COLLATION_CONNECTION="utf8_general_ci"');
+mysqli_set_charset($db, "utf8mb4");
 setlocale(LC_ALL,"ru_RU.UTF8");
