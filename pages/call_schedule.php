@@ -36,88 +36,82 @@ else:
                                     <div class="col-xs-5">
                                         <h2>Розклад дзвінків</h2>
                                     </div>
-                                    <div class="col-xs-7" style="width: calc(100% - 162px);">
-                                        <a href="#" class="btn-m btn-primary"  data-toggle="modal" data-target="#addgroup"><i class="material-icons">&#xE147;</i> <span>Додати розклад дзвінків</span></a>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade animate__animated animate__bounceIn" id="addgroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Додавання розкладу дзвінків</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="daySelect">Виберіть день</label>
-                                                            <select class="form-control" id="daySelect">
-                                                                <option value="Понеділок">Понеділок</option>
-                                                                <option value="Вівторок">Вівторок</option>
-                                                                <option value="Середу">Середа</option>
-                                                                <option value="Четвер">Четвер</option>
-                                                                <option value="Пятницю">Пятниця</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Текст</label>
-                                                            <textarea autocomplete="off" class="form-control" id="text"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
-                                                        <button type="button" class="btn btn-primary" id="add_call_schedule_b" data-dismiss="modal">Додати</button>
-                                                        <script>
-                                                            $(document).on("click","#add_call_schedule_b",function (){
-                                                                var for_day = $("#daySelect").val();
-                                                                var text = $("#text").val();
-                                                                if (!for_day || !text){
-                                                                    alert("Ви не заповнили всі поля");
-                                                                    return false;
-                                                                }
-                                                                $.ajax(
-                                                                    {
-                                                                        type: "POST",
-                                                                        url: "../post/add_call_schedule.php",
-                                                                        data:{ for_day:for_day, text:text},
-                                                                        success: function(response)
-                                                                        {
-                                                                            notyf.success('Розклад дзвінків успішно додано');
-                                                                            console.log("OK")
-                                                                            location.reload();
-                                                                        }
-                                                                    }
-                                                                );
-                                                            })
-                                                        </script>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <?php $call_schedule_sql = mysqli_query($db,"SELECT * FROM `call_schedule`");
+                        $get_call_schedule_arr = mysqli_fetch_array($call_schedule_sql);
+                        ?>
                         <div class="row">
-                            <?php
-                            $call_schedule_sql = mysqli_query($db,"SELECT * FROM `call_schedule`");
-                            while( $get_call_schedule_arr = mysqli_fetch_array($call_schedule_sql)){
-                                ?>
-                                <div class="col-xl-3 col-md-6">
-                                    <div class="small-box bg-yellow">
-                                        <div class="inner">
-                                            <h3><? echo $get_call_schedule_arr["for_day"]; ?></h3>
-                                            <textarea rows="8" class="form-control" id="text"><? echo $get_call_schedule_arr["text"]; ?></textarea>
-                                        </div>
-                                        <div>
-                                            fdbf
-                                        </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3>Понеділок</h3>
+                                        <textarea rows="8" class="form-control" id="Monday"><?php echo $get_call_schedule_arr["Monday"]; ?></textarea>
                                     </div>
                                 </div>
-                                <?php
-                            }
-                            ?>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h3>Вівторок</h3>
+                                        <textarea rows="8" class="form-control" id="Tuesday"><?php echo $get_call_schedule_arr["Tuesday"]; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="small-box bg-dark">
+                                    <div class="inner">
+                                        <h3>Середа</h3>
+                                        <textarea rows="8" class="form-control" id="Wednesday"><?php echo $get_call_schedule_arr["Wednesday"]; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3>Четвер</h3>
+                                        <textarea rows="8" class="form-control" id="Thursday"><?php echo $get_call_schedule_arr["Thursday"]; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h3>Пятниця</h3>
+                                        <textarea rows="8" class="form-control" id="Friday"><?php echo $get_call_schedule_arr["Friday"]; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_call_schedule_b">Зберегти</button>
+                                <script>
+                                    $(document).on("click","#save_call_schedule_b",function (){
+                                        var Monday = $("#Monday").val();
+                                        var Tuesday = $("#Tuesday").val();
+                                        var Wednesday = $("#Wednesday").val();
+                                        var Thursday = $("#Thursday").val();
+                                        var Friday = $("#Friday").val();
+                                        if (!Monday|| !Tuesday || !Wednesday ||!Thursday || !Friday){
+                                            alert("Ви не заповнили всі поля");
+                                            return false;
+                                        }
+                                        $.ajax(
+                                            {
+                                                type: "POST",
+                                                url: "../post/save_call_schedule.php",
+                                                data:{ Monday:Monday, Tuesday:Tuesday, Wednesday:Wednesday, Thursday:Thursday, Friday:Friday  },
+                                                success: function(response)
+                                                {
+                                                    notyf.success('Розклад дзвінків успішно збережено');
+                                                    console.log("OK")
+                                                    location.reload();
+                                                }
+                                            }
+                                        );
+                                    })
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,9 +120,6 @@ else:
         </div>
     </div>
     <?php  include '../include/script.php';?>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>$(document).ready(function() {
             //  $("#groupSelect").chosen();
