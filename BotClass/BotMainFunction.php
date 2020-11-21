@@ -9,10 +9,10 @@ class BotMainFunction
     function sendMessage($chat_id, $message, $replyMarkup) {
         file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup. "&parse_mode=HTML");
     }
-    function createKeyboard($chat_id, $replyMarkup) {
+    function createKeyboard($chat_id, $message, $replyMarkup) {
 
-        file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=%F0%9F%91%86&reply_markup=' . $replyMarkup);
-//
+        file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
+
     }
 
     function save_message($date,$chat_id,$text){
