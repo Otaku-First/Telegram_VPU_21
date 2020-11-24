@@ -46,32 +46,8 @@ else:
                             <div class="col-xl-3 col-md-6">
                                 <div class="small-box bg-red">
                                     <div class="inner">
-                                        <h3>Понеділок</h3>
-                                        <textarea rows="8" class="form-control" id="Monday"><?php echo $get_call_schedule_arr["Monday"]; ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="small-box bg-yellow">
-                                    <div class="inner">
-                                        <h3>Вівторок</h3>
-                                        <textarea rows="8" class="form-control" id="Tuesday"><?php echo $get_call_schedule_arr["Tuesday"]; ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="small-box bg-dark">
-                                    <div class="inner">
-                                        <h3>Середа</h3>
-                                        <textarea rows="8" class="form-control" id="Wednesday"><?php echo $get_call_schedule_arr["Wednesday"]; ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="small-box bg-green">
-                                    <div class="inner">
-                                        <h3>Четвер</h3>
-                                        <textarea rows="8" class="form-control" id="Thursday"><?php echo $get_call_schedule_arr["Thursday"]; ?></textarea>
+                                        <h3>Пн по Чт</h3>
+                                        <textarea rows="8" class="form-control" id="pn_cht"><?php echo $get_call_schedule_arr["pn:cht"]; ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -87,12 +63,9 @@ else:
                                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_call_schedule_b">Зберегти</button>
                                 <script>
                                     $(document).on("click","#save_call_schedule_b",function (){
-                                        var Monday = $("#Monday").val();
-                                        var Tuesday = $("#Tuesday").val();
-                                        var Wednesday = $("#Wednesday").val();
-                                        var Thursday = $("#Thursday").val();
+                                        var pn_cht = $("#pn_cht").val();
                                         var Friday = $("#Friday").val();
-                                        if (!Monday|| !Tuesday || !Wednesday ||!Thursday || !Friday){
+                                        if (!pn_cht|| !Friday){
                                             alert("Ви не заповнили всі поля");
                                             return false;
                                         }
@@ -100,7 +73,7 @@ else:
                                             {
                                                 type: "POST",
                                                 url: "../post/save_call_schedule.php",
-                                                data:{ Monday:Monday, Tuesday:Tuesday, Wednesday:Wednesday, Thursday:Thursday, Friday:Friday  },
+                                                data:{ pn_cht:pn_cht, Friday:Friday  },
                                                 success: function(response)
                                                 {
                                                     notyf.success('Розклад дзвінків успішно збережено');
