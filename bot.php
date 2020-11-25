@@ -82,9 +82,7 @@ switch ($message) {
             $username = $first_name;
             $dog="";
         }
-
         $bot_main_function->sendMessage($chat_id, "Вітаємо ".$dog.$username." ! Виберіть свою групу", $replyMarkup);
-        // $bot_main_function->createKeyboard($chat_id, $bot_interface->mainKeyboard());
         break;
     case "Сповіщення з розкладом \xE2\x9C\x85":
         mysqli_query($db,"UPDATE `users` SET `sendMessage` = 0 WHERE chat_id =" .$chat_id);
@@ -104,9 +102,20 @@ switch ($message) {
         $bot_main_function->sendMessage($chat_id, "Творці бота та системи управління ним:\n@OtakuFirstUA\n@Coll_Otaku",null);
         break;
     case "Назад \xE2\x8F\xAA":
-
         $bot_main_function->createKeyboard($chat_id, "Головне меню", $bot_interface->mainKeyboard());
-
+        break;
+    case "Розклад уроків \xF0\x9F\x93\x9A":
+        $get_timetable_sql= mysqli_query($db,'SELECT * FROM `timetable` WHERE for_group='.$get_mode_arr["u_group"]);
+        $get_timetable_arr = mysqli_fetch_array($get_timetable_sql);
+        $get_timetable = "Розклад уроків на тиждень:\n\xF0\x9F\x94\xB4Понеділок:\n".$get_timetable_arr["Monday"]."\n\xF0\x9F\x94\xB4Вівторок:\n".$get_timetable_arr["Tuesday"]
+            ."\n\xF0\x9F\x94\xB4Середа:\n".$get_timetable_arr["Wednesday"]."\n\xF0\x9F\x94\xB4Четвер:\n".$get_timetable_arr["Thursday"]."\n\xF0\x9F\x94\xB4Пятниця:\n".$get_timetable_arr["Friday"];
+        $bot_main_function->createKeyboard($chat_id, $get_timetable, null);
+        break;
+    case "Розклад дзвінків \xF0\x9F\x94\x94":
+        $get_call_schedule = mysqli_query($db,'SELECT * FROM `call_schedule`');
+        $call_schedule_arr = mysqli_fetch_array($get_call_schedule);
+        $call_schedule = "\xF0\x9F\x94\xB4Понеділок по Четвер:\n".$call_schedule_arr["pn:cht"]."\n\xF0\x9F\x94\xB4Пятниця:\n".$call_schedule_arr["Friday"];
+        $bot_main_function->createKeyboard($chat_id, $call_schedule, null);
         break;
 }
 
@@ -137,7 +146,7 @@ if (strpos($replace_data, 'set_group') !== false)
 
             }
             $is_update = true;
-            // make_user($dog.$username_from,$chat_id_in,$u_group);
+
             $bot_user->make_user($dog.$username_from,$chat_id_in,$u_group);
             break;
     }

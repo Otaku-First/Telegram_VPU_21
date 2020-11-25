@@ -6,10 +6,11 @@ class BotInterface
     function mainKeyboard(){
         $main_keyboard = ['keyboard' =>
             [
+                ["Розклад уроків \xF0\x9F\x93\x9A"],
+                ["Розклад дзвінків \xF0\x9F\x94\x94"],
                 [ "Налаштування \xF0\x9F\x94\xA7"],
                 [["text" => "Скарги \xF0\x9F\x93\xAE" ],
                     ["text" => "Творці \xF0\x9F\x94\x9E"]]
-
             ],'resize_keyboard'=> true];
         $main_keyboard = json_encode($main_keyboard);
         return $main_keyboard;
@@ -57,19 +58,6 @@ class BotInterface
 
 
     }
-    function off_on_send_Keyboard(){
-        $setings_keyboard = [
-            'keyboard' =>[
-                ["Змінити групу"],
-                ["Сповіщення з розкладом"]
-            ],
-            'resize_keyboard'=> true
-        ];
-        $setings_keyboard = json_encode($setings_keyboard);
-        return $setings_keyboard;
-    }
-
-
 
 }
 
