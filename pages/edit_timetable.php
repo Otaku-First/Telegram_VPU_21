@@ -84,7 +84,7 @@ else:
                                 </div>
                             </div>
                         </div>
-                            <div class="modal-footer">
+                            <div class="t_set_b">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" id="dell_timetable_b">Видалити</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.replace('timetable.php');">Закрити</button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_timetable_b">Зберегти</button>

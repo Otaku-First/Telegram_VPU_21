@@ -59,7 +59,7 @@ else:
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="t_set_b">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_call_schedule_b">Зберегти</button>
                                 <script>
                                     $(document).on("click","#save_call_schedule_b",function (){

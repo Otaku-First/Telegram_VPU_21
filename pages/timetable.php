@@ -36,7 +36,7 @@ else:
                                 <div class="col-xs-5">
                                     <h2>Розклад уроків</h2>
                                 </div>
-                                <div class="col-xs-7" style="width: calc(100% - 162px);">
+                                <div class="col-xs-7" style="width: calc(98% - 162px);">
                                     <a href="#" class="btn-m btn-primary"  data-toggle="modal" data-target="#addgroup"><i class="material-icons">&#xE147;</i> <span>Додати розклад</span></a>
 
                                     <!-- Modal -->
