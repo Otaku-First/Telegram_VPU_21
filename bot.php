@@ -1,6 +1,6 @@
 <?php
 
-//ini_set( 'display_errors', '1' );
+ini_set( 'display_errors', '1' );
 
 require_once("post/db_connect.php");
 require_once("users.php");
@@ -15,7 +15,10 @@ $bot_web_sync = new BotWebSync();
 $bot_main_function = new BotMainFunction();
 // Connect Classes />
 global $db;
-$access_token = '935950408:AAEoiKdD6ciM1oCiyPMQedD6idAeJN39fOk';
+
+$get_token = mysqli_fetch_array(mysqli_query($db,"SELECT `token` FROM `bot` WHERE `id`=1"));
+$access_token = $get_token["token"];
+
 $api = 'https://api.telegram.org/bot' . $access_token;
 $file_get_contents = file_get_contents("php://input");
 $output = json_decode($file_get_contents, TRUE);
@@ -107,14 +110,14 @@ switch ($message) {
     case "Розклад уроків \xF0\x9F\x93\x9A":
         $get_timetable_sql= mysqli_query($db,'SELECT * FROM `timetable` WHERE for_group='.$get_mode_arr["u_group"]);
         $get_timetable_arr = mysqli_fetch_array($get_timetable_sql);
-        $get_timetable = "Розклад уроків на тиждень:\n\xF0\x9F\x94\xB4Понеділок:\n".$get_timetable_arr["Monday"]."\n\xF0\x9F\x94\xB4Вівторок:\n".$get_timetable_arr["Tuesday"]
-            ."\n\xF0\x9F\x94\xB4Середа:\n".$get_timetable_arr["Wednesday"]."\n\xF0\x9F\x94\xB4Четвер:\n".$get_timetable_arr["Thursday"]."\n\xF0\x9F\x94\xB4Пятниця:\n".$get_timetable_arr["Friday"];
+        $get_timetable = "Розклад уроків на тиждень:\n\xF0\x9F\x94\xB4 Понеділок:\n".$get_timetable_arr["Monday"]."\n\xF0\x9F\x94\xB4 Вівторок:\n".$get_timetable_arr["Tuesday"]
+            ."\n\xF0\x9F\x94\xB4 Середа:\n".$get_timetable_arr["Wednesday"]."\n\xF0\x9F\x94\xB4 Четвер:\n".$get_timetable_arr["Thursday"]."\n\xF0\x9F\x94\xB4 Пятниця:\n".$get_timetable_arr["Friday"];
         $bot_main_function->createKeyboard($chat_id, $get_timetable, null);
         break;
     case "Розклад дзвінків \xF0\x9F\x94\x94":
         $get_call_schedule = mysqli_query($db,'SELECT * FROM `call_schedule`');
         $call_schedule_arr = mysqli_fetch_array($get_call_schedule);
-        $call_schedule = "\xF0\x9F\x94\xB4Понеділок по Четвер:\n".$call_schedule_arr["pn:cht"]."\n\xF0\x9F\x94\xB4Пятниця:\n".$call_schedule_arr["Friday"];
+        $call_schedule = "\xF0\x9F\x94\xB4 Понеділок по Четвер:\n".$call_schedule_arr["pn:cht"]."\n\xF0\x9F\x94\xB4 Пятниця:\n".$call_schedule_arr["Friday"];
         $bot_main_function->createKeyboard($chat_id, $call_schedule, null);
         break;
 }
@@ -153,5 +156,3 @@ if (strpos($replace_data, 'set_group') !== false)
 }
 
 $bot_main_function->save_message($dete_send,$chat_id,$text_send);
-
-

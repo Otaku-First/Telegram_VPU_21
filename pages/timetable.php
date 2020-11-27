@@ -51,8 +51,16 @@ else:
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label>Номер групи</label>
-                                                        <input type="number" autocomplete="off" class="form-control" id="for_group">
+                                                        <label for="for_group">Виберіть групу</label>
+                                                        <select class="form-control" id="for_group">
+                                                            <?php
+                                                            $group_sql = mysqli_query($db,"SELECT * FROM `groups`");
+                                                            ?>
+                                                            <?php while($group_arr = mysqli_fetch_array($group_sql)){ ?>
+                                                                <option value="<?php echo $group_arr["number"];?>"><?php echo $group_arr["number"]; echo " - ";echo $group_arr["short_name"]; ?></option>
+
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Понеділок</label>

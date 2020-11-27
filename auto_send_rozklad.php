@@ -10,6 +10,6 @@ while ($send_mess_arr = mysqli_fetch_array($send_mess_sql)) {
     $get_timetable_arr = mysqli_fetch_array($get_timetable_sql);
     $get_timetable = $get_timetable_arr[date("l")];
 
-    $bot_main_function->sendMessage($send_mess_arr["chat_id"], $get_timetable,null);
+    $bot_main_function->sendMessage($send_mess_arr["chat_id"], "\xF0\x9F\x94\xB4 Розклад на сьогодні:\n".$get_timetable,null);
 
 }
