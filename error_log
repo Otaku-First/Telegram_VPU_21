@@ -1,6 +1,0 @@
-[19-Aug-2020 11:03:26 UTC] PHP Fatal error:  Uncaught TelegramBot\Api\InvalidJsonException: Syntax error in /home/u630099368/domains/search-games.online/public_html/telega/vendor/telegram-bot/api/src/BotApi.php:279
-Stack trace:
-#0 /home/u630099368/domains/search-games.online/public_html/telega/vendor/telegram-bot/api/src/Client.php(99): TelegramBot\Api\BotApi::jsonValidate('', true)
-#1 /home/u630099368/domains/search-games.online/public_html/telega/bot.php(290): TelegramBot\Api\Client->run()
-#2 {main}
-  thrown in /home/u630099368/domains/search-games.online/public_html/telega/vendor/telegram-bot/api/src/BotApi.php on line 279
